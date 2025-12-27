@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forgot Password</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            /* margin-top: 20vh; */
+            background: linear-gradient(270deg, rgb(4, 4, 26), rgb(34, 33, 33));
+            display: flex;
+            justify-content: center;
+            align-items: 0;
+        }
+        .card {
+            margin-top: 130px;
+            background-color: rgb(31, 31, 39);
+            height: 45vh;
+            width: 45vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: 0;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 10px 10px 25px 5px rgb(3, 0, 10);
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        p {
+            margin-top: 130px;
+            color: white;
+            font-weight: bold;
+        }
+        input {
+            /* margin-top: 130px; */
+            height: 3vh;
+            width: 30vh;
+            
+        }
+        button {
+            color: white;
+            border-radius: 10px;
+            height: 3vh;
+            width: 20vh;
+            background: linear-gradient(360deg, rgb(8, 66, 8), rgb(62, 160, 32));
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <p>Enter Your Email below</p>
+        <input class="email" type="email" name="email" required>
+        <button class="submit" type="submit">Send Reset Email</button>
+    </div>
+
+
+
+    <script>
+        const btn = document.querySelector(".submit");
+        const emailInput = document.querySelector(".email");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        btn.addEventListener("click", () => {
+            const email = emailInput.value.trim();
+            if(!emailPattern.test(email)) {
+                alert("Invalid Email Format");
+            } else {
+                alert("Reset link Sended")
+            }
+        }) 
+        
+    </script>
+</body>
+</html>
