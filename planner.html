@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <!-- <link rel="stylesheet" href="index.css"> -->
     <style>
         * {
             margin: 0px;
-            font-family: sans-serif;
+            /* font-family: sans-serif; */
         }
         #full-body {
             margin: 35px;
@@ -31,52 +34,377 @@
         .app-logo {
             margin-top: 5vh;
             background-image: url(logo.png);
-            /* background-color: pink; */
             height: 20vh;  
             width: 70%;
             border-radius: 40px;
-            /* box-shadow: 10px 10px 40px 1px black;   */
-            /* display: flex;
-            justify-content: center;
-            align-items: center;      */
         }
-        .left-link {
-            /* background-color: red; */
+        #right {
+            width: 88%;
+            height: 92vh;
+            display: flex;
+        }
+        .rl-task {
+            width: 60%;
+            height: 100%;
+        }
+        .rl-task .tittle h1 {
+            font-family: 'Raleway';
+            font-size: 60px;
+            /* background-color: green; */
+        }
+        .heading {
+            display: flex;
+            gap: 20px;
+        }
+        .done-task {
+            /* background-color: #9B6DE5; */
+            height: 70px;
+            width: 70px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            font-weight: 600;
+            font-family: 'Poppins';
+            border: 2px solid rgba(26, 2, 43, 0.4);
+            border-radius: 20px;
+            /* box-shadow: 0 0 5px rgba(26, 1, 43, 0.4); */
+        }
+        .task-no {
+            /* background-color: #9B6DE5; */
+            height: 70px;
+            width: 70px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            font-weight: 600;
+            font-family: 'Poppins';
+            border: 2px solid rgba(26, 2, 43, 0.4);
+            border-radius: 20px;
+            /* box-shadow: 0 0 5px rgba(26, 1, 43, 0.4); */
+        }
+        .container {
+            margin-top: 20px;
+            height: 80%;
+            box-sizing: border-box;
+            display: flex;
+            padding: 0 10px;
+        }
+        .todo-app {
+            height: 90%;
+            width: 90%;
+            max-width: 900px;
+            padding: 1rem;
+            gap: 30px;
+            border-radius: 20px;
+            /* box-shadow: 0 0 100px rgba(26, 1, 43, 0.4); */
+            border: 3px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+        }
+        .input-area {
+            /* background-color: green; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 10px 17px;
+            font-size: 1.1rem;
+            border: none;
+            outline: none;
+            border-radius: 22px;
+            background: rgba(255, 194, 209, 0.3);
+            color: rgb(26, 24, 24);
+        }
+        .input-area input::placeholder {
+            color: #bcbcbc;
+        }
+        .input-area button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            padding: 8px;
+            border-radius: 50%;
+            color: rgb(26, 24, 24);
+            font-size: 1.1rem;
+            background: rgba(255, 194, 209, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .input-area button:hover {
+            transform: scale(1.1);
+            background: #ff6f91;
+        }
+        .todos-container {
+            margin-top: 10px;
+            height: 90%;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            color: white;
-            gap: 45px;
         }
-        .left-link a {
-            text-decoration: none;
+        #task-list {
+            width: 100%;
+            max-height: 550px;
+            overflow-y: scroll;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #task-list li {
+            font-family: 'Raleway';
+            width: 97%;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 194, 209, 0.3);
+            margin-bottom: 10px;
+            padding: 8px 10px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            color: black;
+            /* position: relative; */
+            transition:  box-shadow 0.2s ease;
+        }
+        #task-list li:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #task-list li .checkbox {
+            min-width: 20px;
+            height: 20px;
+            border: 2px solid rgba(41, 39, 39, 0.3);
+            background: transparent;
+            border-radius: 50%;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        #task-list li .checkbox:checked {
+            background: #ff6f91;
+            transform: scale(1.1);
+        }
+        #task-list li .checkbox:checked::before {
+            content: '\2713';
+            color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+        }
+        #task-list li span {
+            flex: 1;
+            margin-left: 10px;
+            word-wrap: break-word;
+        }
+        #task-list li.completed span {
+            text-decoration: 2px line-through #000;
+            color: gray;
+        }
+        .task-buttons {
+            display: flex;
+            gap: 10px;
+            margin-right: auto;
+        }
+        .task-buttons button {
+            background: rgba(255, 194, 209, 0.3);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
             color: white;
-            font-size: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .task-buttons button:hover {
+            transform: scale(1.2);
+        }
+        .task-buttons .edit-btn {
+            background: #ffbf00;
+        }
+        .task-buttons .delete-btn {
+            background: #ff6f91;
+        }
+        .empty-image {
+            padding-left: 100px;
+            height: 100%;
+            width: 70%;
+            border-radius: 20px;
         }
 
+        .rr-task {
+            background-color: rgb(190, 190, 190);
+            border-radius: 40px;
+            width: 40%;
+            height: 100%;
+        }
 
     </style>
 </head>
 <body>
-    <body>
     <div id="full-body">
         <div id="content">
             <div id="left">
-                <div class="app-logo">
-        
-                </div>
-                <div class="left-link">
+                <div class="app-logo"></div>
+                <div class="nav-planner">
                     <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                    <a href="planner.html"><i class="fa-solid fa-clipboard-list"></i> Planner</a>
-                    <a href="course.html"><i class="fa-solid fa-book"></i> Courses</a>
-                    <a href="notes.html"> <i class="fa-solid fa-note-sticky"></i> Notes</a>
-                    <a href="finance.html"><i class="fa-solid fa-indian-rupee-sign"></i> Finance</a>
-                    <a href="#"><i class="fa-solid fa-gear"></i> Setting</a>
+                    <a href="#calendar"><i class="fa-solid fa-house"></i> Calender</a>
                 </div>
             </div>
+
+            <div id="right">
+                <div class="rl-task">
+                    <div class="heading">
+                        <div class="tittle"> <h1>Today</h1></div>
+                        <div class="done-task"></div>
+                        <div class="task-no"></div>
+                    </div>
+
+                    <div class="container">
+                        <div class="todo-app">
+                            <form action="" class="input-area">
+                                <input type="text" name="task-input" id="task-input" placeholder="Add a new task..">
+                                <button type="button" id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+                            </form>
+
+                            <div class="todos-container">
+                                <ul id="task-list"></ul>
+                                <img class="empty-image" src="empty (2).jpg" alt="empty">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="rr-task"></div>
+                
+            </div>
         
-    
+            
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskInput = document.getElementById('task-input');
+            const addTaskBtn = document.getElementById('add-task-btn');
+            const taskList = document.getElementById('task-list');
+            const emptyImage = document.querySelector('.empty-image');
+            const todosContainer = document.querySelector('.todos-container');
+            const taskNo = document.querySelector('.task-no');
+            const doneTask = document.querySelector('.done-task');
+
+            
+            const updateTaskCount = () => {
+                taskNo.textContent = `${taskList.children.length}`;
+
+            }
+
+            const doneTaskCount = () => {
+                const doneCount = document.querySelectorAll('#task-list .checkbox:checked').length;
+                doneTask.textContent = `${doneCount}`;
+
+            }
+            
+            const saveTask = () => {
+                const tasks = [];
+
+                document.querySelectorAll('#task-list li').forEach(li => {
+                    tasks.push({text: li.querySelector('span').textContent, completed: li.querySelector('.checkbox').checked});
+                })
+
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+            }
+
+            const loadTask = () => {
+                const saved = JSON.parse(localStorage.getItem("tasks")) || [];
+                saved.forEach(task => addTask(task.text, task.completed));
+            }
+
+            const toggleEmptyState = () => {
+                emptyImage.style.display = taskList.children.length === 0 ? 'block' : 'none';
+                // todosContainer.style.width = taskList.children.length > 0 ? '100%' : '50%';
+            }
+
+            const addTask = (text, completed = false) => {
+                const taskText = text || taskInput.value.trim();
+                if(!taskText) {
+                    return;
+                }
+
+                const li = document.createElement('li'); 
+                li.innerHTML = `
+                <input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}/>
+                <span>${taskText}</span>
+                <div class="task-buttons">
+                    <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                `;
+                
+                const checkbox = li.querySelector('.checkbox')
+                const editBtn = li.querySelector('.edit-btn');
+
+                if(completed) {
+                    li.classList.add('completed');
+                    editBtn.disabled = true;
+                    editBtn.style.opacity = '0.5';
+                    editBtn.style.pointerEvents = 'none';
+                }
+
+                checkbox.addEventListener('change', () => {
+                    const isChecked = checkbox.checked;
+                    li.classList.toggle('completed', isChecked);
+                    editBtn.disabled = isChecked;
+                    editBtn.style.opacity = isChecked ? '0.5' : '1';
+                    editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
+                    doneTaskCount();
+                    saveTask();
+                })
+                editBtn.addEventListener('click', () => {
+                    if(!checkbox.checked) {
+                        taskInput.value = li.querySelector('span').textContent;
+                        li.remove();
+                        toggleEmptyState();
+                    }
+                })
+
+                li.querySelector('.delete-btn').addEventListener('click', () => {
+                    li.remove();
+                    doneTaskCount();
+                    updateTaskCount();
+                    saveTask();
+                    toggleEmptyState();
+                })
+
+                taskList.appendChild(li);
+                taskInput.value = '';
+                toggleEmptyState();
+
+                updateTaskCount();
+                doneTaskCount();
+                saveTask();
+            };
+
+            addTaskBtn.addEventListener('click', () =>  addTask()); 
+            taskInput.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter') {
+                    e.preventDefault();
+                    addTask();
+                }
+            })
+
+            loadTask();
+        })
+    </script>
 </body>
 </html>

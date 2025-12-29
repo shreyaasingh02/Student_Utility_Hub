@@ -21,3 +21,5 @@ forpass.onclick = () => {
 }
 
 const card = document.querySelector(".main-card");
+
+
