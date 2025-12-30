@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <!-- <link rel="stylesheet" href="index.css"> -->
     <style>
@@ -37,6 +38,29 @@
             height: 20vh;  
             width: 70%;
             border-radius: 40px;
+        }
+        .nav-planner {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            font-family: 'Raleway';
+        }
+        .nav-planner a {
+            box-shadow: 0 0 5px rgba(26, 1, 43, 0.4);
+            background-color: #a284d3;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 15px;
+            padding: 15px 30px;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-planner a:hover {
+            transform: scale(1.05);
+        }
+        .navigation-bar.active {
+            color: purple;
         }
         #right {
             width: 88%;
@@ -88,19 +112,19 @@
         }
         .container {
             margin-top: 20px;
-            height: 80%;
+            height: 89%;
             box-sizing: border-box;
             display: flex;
             padding: 0 10px;
         }
         .todo-app {
-            height: 90%;
+            height: 95%;
             width: 90%;
             max-width: 900px;
             padding: 1rem;
             gap: 30px;
             border-radius: 20px;
-            /* box-shadow: 0 0 100px rgba(26, 1, 43, 0.4); */
+            box-shadow: 0 0 100px rgba(118, 117, 119, 0.4);
             border: 3px solid rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(10px);
         }
@@ -151,7 +175,7 @@
         }
         #task-list {
             width: 100%;
-            max-height: 550px;
+            max-height: 630px;
             overflow-y: scroll;
             list-style: none;
             padding: 0;
@@ -247,6 +271,79 @@
             width: 40%;
             height: 100%;
         }
+        .task-name {
+            display: flex;
+            padding-left: 19px;
+            align-items: center;
+            background: rgb(155, 153, 153);
+            font-family: 'Raleway';
+            height: 70px;
+            width: 97%;
+            border-top-right-radius: 40px;
+            border-top-left-radius: 40px;
+        }
+        .time-sec {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            /* background-color: green; */
+            font-family: 'Ubuntu';
+            font-size: 12px;
+            font-weight: 100;
+            height: 50px;
+            width: 98.5%;
+        }
+        .second-box {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            height: 80%;
+            gap: 20px;
+        }
+        .details {
+            display: flex;
+            justify-content: center;
+            height: 50%;
+        }
+        .details textarea {
+            border: 2px double rgba(50, 2, 53, 0.5);
+        }
+        .quotes {
+            margin-left: 40px;
+            margin-right: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(26, 1, 43, 0.4);
+            padding-top: 10px;
+            gap: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(190, 190, 190);
+            height: 40%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .quotes:hover {
+            transform: scale(1.05);
+        }
+        .quotes h2 {
+            font-family: 'Raleway';
+        }
+        .quotes p {
+            font-family: 'Poppins';
+        }
+        .progress-container {
+            background-color: gray;
+            height: 10px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(to right, #a07eff, #ff758c);
+            transition: width 0.3s ease;
+        }
 
     </style>
 </head>
@@ -256,8 +353,12 @@
             <div id="left">
                 <div class="app-logo"></div>
                 <div class="nav-planner">
-                    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                    <a href="#calendar"><i class="fa-solid fa-house"></i> Calender</a>
+                    <a href="index.html" class="navigation-bar"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="planner.html" class="navigation-bar"><i class="fa-solid fa-calendar-days"></i> Planner</a>
+                    <a href="course.html" class="navigation-bar"><i class="fa-solid fa-book"></i> Courses</a>
+                    <a href="notes.html" class="navigation-bar"> <i class="fa-solid fa-note-sticky"></i> Notes</a>
+                    <a href="finance.html" class="navigation-bar"><i class="fa-solid fa-indian-rupee-sign"></i> Finance</a>
+                    <a href="#" class="navigation-bar"><i class="fa-solid fa-gear"></i> Setting</a>
                 </div>
             </div>
 
@@ -273,6 +374,9 @@
                         <div class="todo-app">
                             <form action="" class="input-area">
                                 <input type="text" name="task-input" id="task-input" placeholder="Add a new task..">
+                                <input type="time" name="st-time" id="st-time">
+                                <span>–</span>
+                                <input type="time" name="end-time" id="end-time">
                                 <button type="button" id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
                             </form>
 
@@ -285,126 +389,34 @@
 
                 </div>
                 
-                <div class="rr-task"></div>
+                <div class="rr-task">
+                    <div class="task-name"></div>
+                    <div class="time-sec"></div>
+
+                    <div class="second-box">
+
+                        <div class="details">
+                            <textarea placeholder="A quick Glance panel"  cols="80"></textarea>
+                        </div>
+
+                        <div class="progress-container">
+                            <div class="progress-fill"></div>
+                        </div>
+    
+                        <div class="quotes">
+                            <h2>Quotes :)</h2>
+                            <p>There's didn't exist a <b> <i>valid excuse to procastinate </i></b> the things<br> that will take you ahead from evryone else!</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="empty-box">Click any task to see the whole detail.</div> -->
+                </div>
                 
             </div>
         
             
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const taskInput = document.getElementById('task-input');
-            const addTaskBtn = document.getElementById('add-task-btn');
-            const taskList = document.getElementById('task-list');
-            const emptyImage = document.querySelector('.empty-image');
-            const todosContainer = document.querySelector('.todos-container');
-            const taskNo = document.querySelector('.task-no');
-            const doneTask = document.querySelector('.done-task');
-
-            
-            const updateTaskCount = () => {
-                taskNo.textContent = `${taskList.children.length}`;
-
-            }
-
-            const doneTaskCount = () => {
-                const doneCount = document.querySelectorAll('#task-list .checkbox:checked').length;
-                doneTask.textContent = `${doneCount}`;
-
-            }
-            
-            const saveTask = () => {
-                const tasks = [];
-
-                document.querySelectorAll('#task-list li').forEach(li => {
-                    tasks.push({text: li.querySelector('span').textContent, completed: li.querySelector('.checkbox').checked});
-                })
-
-                localStorage.setItem("tasks", JSON.stringify(tasks));
-            }
-
-            const loadTask = () => {
-                const saved = JSON.parse(localStorage.getItem("tasks")) || [];
-                saved.forEach(task => addTask(task.text, task.completed));
-            }
-
-            const toggleEmptyState = () => {
-                emptyImage.style.display = taskList.children.length === 0 ? 'block' : 'none';
-                // todosContainer.style.width = taskList.children.length > 0 ? '100%' : '50%';
-            }
-
-            const addTask = (text, completed = false) => {
-                const taskText = text || taskInput.value.trim();
-                if(!taskText) {
-                    return;
-                }
-
-                const li = document.createElement('li'); 
-                li.innerHTML = `
-                <input type="checkbox" class="checkbox" ${completed ? 'checked' : ''}/>
-                <span>${taskText}</span>
-                <div class="task-buttons">
-                    <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                `;
-                
-                const checkbox = li.querySelector('.checkbox')
-                const editBtn = li.querySelector('.edit-btn');
-
-                if(completed) {
-                    li.classList.add('completed');
-                    editBtn.disabled = true;
-                    editBtn.style.opacity = '0.5';
-                    editBtn.style.pointerEvents = 'none';
-                }
-
-                checkbox.addEventListener('change', () => {
-                    const isChecked = checkbox.checked;
-                    li.classList.toggle('completed', isChecked);
-                    editBtn.disabled = isChecked;
-                    editBtn.style.opacity = isChecked ? '0.5' : '1';
-                    editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
-                    doneTaskCount();
-                    saveTask();
-                })
-                editBtn.addEventListener('click', () => {
-                    if(!checkbox.checked) {
-                        taskInput.value = li.querySelector('span').textContent;
-                        li.remove();
-                        toggleEmptyState();
-                    }
-                })
-
-                li.querySelector('.delete-btn').addEventListener('click', () => {
-                    li.remove();
-                    doneTaskCount();
-                    updateTaskCount();
-                    saveTask();
-                    toggleEmptyState();
-                })
-
-                taskList.appendChild(li);
-                taskInput.value = '';
-                toggleEmptyState();
-
-                updateTaskCount();
-                doneTaskCount();
-                saveTask();
-            };
-
-            addTaskBtn.addEventListener('click', () =>  addTask()); 
-            taskInput.addEventListener('keypress', (e) => {
-                if(e.key === 'Enter') {
-                    e.preventDefault();
-                    addTask();
-                }
-            })
-
-            loadTask();
-        })
-    </script>
+    <script src="planner.js"></script>
 </body>
 </html>
